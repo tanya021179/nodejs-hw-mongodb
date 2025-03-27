@@ -5,7 +5,7 @@ import { getEnvVar } from "./utils/getEnvVar.js";
 
 import { getContacts, getContactsById } from "./services/contacts.js";
 
-const port = Number(getEnvVar("PORT", "3000"));
+const port = Number(getEnvVar("PORT", 3000));
 
 export const setupServer = () => {
     
