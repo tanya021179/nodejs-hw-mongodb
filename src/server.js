@@ -14,7 +14,7 @@ export const setupServer = () => {
     app.use(express.json());
     app.use(cors());
     
-   app.use(pino());
+//    app.use(pino());
 
     app.get("/contacts", async (request, response) => {
         const data = await getContacts();
