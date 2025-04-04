@@ -7,9 +7,12 @@ export const getContactsById = contactId => ContactCollection.findOne({ _id: con
 export const addContact = payload => ContactCollection.create(payload);
 
 export const updateContact = async (_id, payload) => {
-    const data = await ContactCollection.findOneAndUpdate({ _id }, payload);
+    const result = await ContactCollection.findOneAndUpdate({ _id }, payload,
+        {
+        new: true,
+    });
 
-    return data;
+    return result;
 }
 
 export const deleteContactById = _id => ContactCollection.findByIdAndDelete({ _id });

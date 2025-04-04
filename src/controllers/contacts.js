@@ -60,7 +60,7 @@ throw createHttpError(404, "Contact not found")
         response.json({
             status: 200,
             message: "Successfully patched a contact!",
-            data: result.data,
+            data: result,
         });
 }
 
