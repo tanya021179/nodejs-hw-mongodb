@@ -31,6 +31,9 @@ contactSchema.post("save", (error, doc, next) => {
     next();
 })
 
+export const contactSortFields = ["name", "phoneNumber", "email",
+    "isFavourite", "contactType"]
+
 const ContactCollection = model("contact", contactSchema);
 
 export default ContactCollection;
