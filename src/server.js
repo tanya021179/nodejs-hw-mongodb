@@ -11,14 +11,14 @@ import contactsRouter from "./routers/contacts.js";
 const port = Number(getEnvVar("PORT", 3000));
 
 export const setupServer = () => {
-    
+
     const app = express();
-    
+
     app.use(express.json());
     app.use(cors());
-    
+
     //    app.use(pino());
-    
+
     app.use("/contacts", contactsRouter);
 
     app.use(notFoundHandle);
