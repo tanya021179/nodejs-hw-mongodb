@@ -7,6 +7,7 @@ import { notFoundHandle } from "./middlewares/notFoundHandler.js";
 import { errorHandler } from "./middlewares/errorHandler.js";
 
 import contactsRouter from "./routers/contacts.js";
+import authRouter from "./routers/auth.js";
 
 const port = Number(getEnvVar("PORT", 3000));
 
@@ -19,6 +20,7 @@ export const setupServer = () => {
 
     //    app.use(pino());
 
+    app.use("/auth", authRouter);
     app.use("/contacts", contactsRouter);
 
     app.use(notFoundHandle);
