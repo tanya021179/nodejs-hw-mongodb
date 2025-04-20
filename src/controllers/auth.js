@@ -16,10 +16,12 @@ const setupSession = (response, session) => {
 export const registerController = async (require, response) => {
     const user = await registerUser(require.body);
 
+    const { password, ...userWithoutPassword } = user;
+
     response.status(201).json({
         status: 201,
         message: "Successfully registered a user!",
-        data: user,
+        data: userWithoutPassword,
     });
 };
 

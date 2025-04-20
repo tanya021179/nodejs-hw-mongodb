@@ -33,4 +33,4 @@ export const updateContact = async (_id, payload, userId) => {
     return result;
 }
 
-export const deleteContactById = (_id, userId) => ContactCollection.findByIdAndDelete({ _id, userId });
+export const deleteContactById = (_id, userId) => ContactCollection.findOneAndDelete({ _id, userId });
