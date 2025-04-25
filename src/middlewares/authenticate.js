@@ -14,6 +14,7 @@ export const authenticate = async (request, response, next) => {
 
     const session = await findSession({ accessToken });
     if (!session) {
+
         return next(createHttpError(401, "Session not found"));
     }
 

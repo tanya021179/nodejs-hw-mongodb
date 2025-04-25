@@ -10,6 +10,8 @@ import { errorHandler } from "./middlewares/errorHandler.js";
 import contactsRouter from "./routers/contacts.js";
 import authRouter from "./routers/auth.js";
 
+import { UPLOAD_DIR } from "./constants/index.js";
+
 const port = Number(getEnvVar("PORT", 3000));
 
 export const setupServer = () => {
@@ -22,8 +24,11 @@ export const setupServer = () => {
 
     //    app.use(pino());
 
+    app.use("/uploads", express.static(UPLOAD_DIR));
+
     app.use("/auth", authRouter);
     app.use("/contacts", contactsRouter);
+
 
     app.use(notFoundHandle);
 

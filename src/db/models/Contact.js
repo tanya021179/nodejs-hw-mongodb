@@ -29,8 +29,18 @@ const contactSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: "user",
         required: true,
-    }
-}, { versionKey: false, timestamps: true });
+    },
+    photo: {
+        type: String,
+        required: false,
+        default: null,
+    },
+},
+    {
+        versionKey: false,
+        timestamps: true,
+    },
+);
 
 contactSchema.post("save", (error, doc, next) => {
     next();

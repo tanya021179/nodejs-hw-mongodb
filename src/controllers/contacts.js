@@ -7,6 +7,8 @@ import { contactSortFields } from "../db/models/Contact.js";
 
 import { getContacts, getContactsById, addContact, updateContact, deleteContactById } from "../services/contacts.js";
 
+import { saveFileToUploadDir } from "../utils/saveFileToUploadDir.js";
+
 export const getContactsController = async (request, response) => {
     const paginationParams = parsePaginationParams(request.query);
     const sortParams = parseSortParams(request.query, contactSortFields);
@@ -62,10 +64,20 @@ export const addContactController = async (request, response) => {
 
 export const patchContactController = async (request, response) => {
     const { contactId } = request.params;
+    const photo = request.file;
+
+    let photoUrl = null;
+    console.log("Updating contact with ID:", contactId, "Body:", request.body, "User ID:", request.user._id);
+    if (photo) {
+        photoUrl = await saveFileToUploadDir(photo);
+    }
+
     const { _id: userId } = request.user;
-    const result = await updateContact(contactId, request.body, userId);
+
+    const result = await updateContact(contactId, { ...request.body, photo: photoUrl }, userId);
 
     if (!result) {
+        console.log("No contact found with ID:", contactId, "for User ID:", userId);
         throw createHttpError(404, "Contact not found")
     }
 
