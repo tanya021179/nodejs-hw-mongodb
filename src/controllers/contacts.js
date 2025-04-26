@@ -9,6 +9,10 @@ import { getContacts, getContactsById, addContact, updateContact, deleteContactB
 
 import { saveFileToUploadDir } from "../utils/saveFileToUploadDir.js";
 
+import { saveFileToCloudinary } from "../utils/saveFileToCloudinary.js";
+
+import { getEnvVar } from "../utils/getEnvVar.js";
+
 export const getContactsController = async (request, response) => {
     const paginationParams = parsePaginationParams(request.query);
     const sortParams = parseSortParams(request.query, contactSortFields);
@@ -62,14 +66,18 @@ export const addContactController = async (request, response) => {
 
 };
 
-export const patchContactController = async (request, response) => {
+export const patchContactController = async (request, response, next) => {
     const { contactId } = request.params;
     const photo = request.file;
 
-    let photoUrl = null;
-    console.log("Updating contact with ID:", contactId, "Body:", request.body, "User ID:", request.user._id);
+    let photoUrl;
+
     if (photo) {
-        photoUrl = await saveFileToUploadDir(photo);
+        if (getEnvVar('ENABLE_CLOUDINARY') === 'true') {
+            photoUrl = await saveFileToCloudinary(photo);
+        } else {
+            photoUrl = await saveFileToUploadDir(photo);
+        }
     }
 
     const { _id: userId } = request.user;
@@ -77,8 +85,8 @@ export const patchContactController = async (request, response) => {
     const result = await updateContact(contactId, { ...request.body, photo: photoUrl }, userId);
 
     if (!result) {
-        console.log("No contact found with ID:", contactId, "for User ID:", userId);
-        throw createHttpError(404, "Contact not found")
+
+        return next(createHttpError(404, "Contact not found"));
     }
 
     response.json({
