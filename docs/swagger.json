@@ -164,6 +164,8 @@
           }
         ],
         "requestBody": {
+          "description": "Update contact details",
+          "required": true,
           "content": {
             "multipart/form-data": {
               "schema": {
@@ -206,8 +208,7 @@
                   "photo": {
                     "description": "Сontact's photo",
                     "type": "string",
-                    "format": "binary",
-                    "example": "filename.jpg"
+                    "format": "binary"
                   }
                 }
               }
@@ -405,8 +406,7 @@
                   "photo": {
                     "description": "Link to contact's photo",
                     "type": "string",
-                    "format": "binary",
-                    "example": "filename.jpg"
+                    "format": "binary"
                   }
                 }
               }
@@ -596,8 +596,7 @@
           "photo": {
             "description": "Link to contact's photo",
             "type": "string",
-            "format": "binary",
-            "example": "filename.jpg"
+            "format": "binary"
           }
         }
       }

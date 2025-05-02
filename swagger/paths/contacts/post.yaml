@@ -6,6 +6,8 @@ description: 'Create a contact with payload'
 security:
   - bearerAuth: []
 requestBody:
+  description: "Update contact details"
+  required: true
   content:
     multipart/form-data:
       schema:
@@ -39,7 +41,6 @@ requestBody:
             description: "Сontact's photo"
             type: string
             format: binary
-            example: "filename.jpg"
 responses:
   '201':
     description: Creates a contact

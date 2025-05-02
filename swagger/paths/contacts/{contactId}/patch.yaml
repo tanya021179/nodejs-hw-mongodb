@@ -49,7 +49,6 @@ requestBody:
             description: "Link to contact's photo"
             type: string
             format: binary
-            example: "filename.jpg"
 responses:
   '200':
     description: 'Patch contact by id'
