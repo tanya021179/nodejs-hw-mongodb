@@ -38,7 +38,7 @@ requestBody:
             type: string
             enum: ["work", "home", "personal"]
           photo:
-            description: "Сontact's photo"
+            description: "Contact's photo"
             type: string
             format: binary
 responses:
