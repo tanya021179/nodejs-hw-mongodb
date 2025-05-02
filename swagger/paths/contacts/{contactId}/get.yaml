@@ -33,6 +33,10 @@ responses:
             data:
               type: object
               $ref: '../../../components/schemas/contact.yaml'
+  '400':
+    $ref: '../../../components/responses/400.yaml'
+  '401':
+    $ref: '../../../components/responses/401.yaml'
   '404':
     description: 'Contact not found'
     content:
@@ -49,5 +53,4 @@ responses:
             message:
               type: string
               example: Contact not found
-  '401':
-    $ref: '../../../components/responses/401.yaml'
+ 

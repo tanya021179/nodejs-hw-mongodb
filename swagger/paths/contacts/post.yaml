@@ -13,8 +13,6 @@ requestBody:
         required:
           - name
           - phoneNumber
-          - email
-          - isFavourite
           - contactType
         properties:
           name:
@@ -23,7 +21,7 @@ requestBody:
             example: 'John Doe'
           phoneNumber:
             description: "Contact's phone numbe"
-            type: number
+            type: string
             example: "+380000000001"
           email:
             description: "Contact's email"
@@ -34,12 +32,13 @@ requestBody:
             type: boolean
             example: false
           contactType:
-            description: "Contact's contact type"
+            description: "Contact's type"
             type: string
             enum: ["work", "home", "personal"]
           photo:
             description: "Link to contact's photo"
             type: string
+            format: binary
             example: https://res.cloudinary.com/uqwgdu/image/upload/image.png
 responses:
   '201':
