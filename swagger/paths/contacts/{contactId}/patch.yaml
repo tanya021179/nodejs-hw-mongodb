@@ -13,6 +13,8 @@ parameters:
       type: string
       example: '65ca67e7ae7f10c88b598384'
 requestBody:
+  description: "Update contact details"
+  required: true
   content:
     multipart/form-data:
       schema:
@@ -47,7 +49,7 @@ requestBody:
             description: "Link to contact's photo"
             type: string
             format: binary
-            example: https://res.cloudinary.com/uqwgdu/image/upload/image.png
+            example: "filename.jpg"
 responses:
   '200':
     description: 'Patch contact by id'

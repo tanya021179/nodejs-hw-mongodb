@@ -36,10 +36,10 @@ requestBody:
             type: string
             enum: ["work", "home", "personal"]
           photo:
-            description: "Link to contact's photo"
+            description: "Сontact's photo"
             type: string
             format: binary
-            example: https://res.cloudinary.com/uqwgdu/image/upload/image.png
+            example: "filename.jpg"
 responses:
   '201':
     description: Creates a contact

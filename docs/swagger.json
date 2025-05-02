@@ -11,10 +11,10 @@
   },
   "servers": [
     {
-      "url": "http://localhost:3000"
+      "url": "https://nodejs-hw-mongodb-5-sbgb.onrender.com"
     },
     {
-      "url": "https://nodejs-hw-mongodb-5-sbgb.onrender.com"
+      "url": "http://localhost:3000"
     }
   ],
   "tags": [
@@ -204,10 +204,10 @@
                     ]
                   },
                   "photo": {
-                    "description": "Link to contact's photo",
+                    "description": "Сontact's photo",
                     "type": "string",
                     "format": "binary",
-                    "example": "https://res.cloudinary.com/uqwgdu/image/upload/image.png"
+                    "example": "filename.jpg"
                   }
                 }
               }
@@ -360,6 +360,8 @@
           }
         ],
         "requestBody": {
+          "description": "Update contact details",
+          "required": true,
           "content": {
             "multipart/form-data": {
               "schema": {
@@ -404,7 +406,7 @@
                     "description": "Link to contact's photo",
                     "type": "string",
                     "format": "binary",
-                    "example": "https://res.cloudinary.com/uqwgdu/image/upload/image.png"
+                    "example": "filename.jpg"
                   }
                 }
               }
@@ -594,7 +596,8 @@
           "photo": {
             "description": "Link to contact's photo",
             "type": "string",
-            "example": "https://res.cloudinary.com/uqwgdu/image/upload/image.png"
+            "format": "binary",
+            "example": "filename.jpg"
           }
         }
       }
