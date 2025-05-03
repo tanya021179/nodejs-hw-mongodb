@@ -245,6 +245,9 @@
               }
             }
           },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
           "401": {
             "$ref": "#/components/responses/401"
           }
@@ -367,12 +370,6 @@
             "multipart/form-data": {
               "schema": {
                 "type": "object",
-                "required": [
-                  "name",
-                  "phoneNumber",
-                  "contactType",
-                  "photo"
-                ],
                 "properties": {
                   "name": {
                     "description": "Contact's name",
@@ -603,7 +600,7 @@
     },
     "responses": {
       "400": {
-        "description": "Bad request - invalid id",
+        "description": "Bad request",
         "content": {
           "application/json": {
             "schema": {
@@ -616,10 +613,6 @@
                 "status": {
                   "type": "integer",
                   "example": 400
-                },
-                "message": {
-                  "type": "string",
-                  "example": "Invalid Id"
                 }
               }
             }
